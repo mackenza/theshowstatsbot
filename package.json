@@ -1,0 +1,35 @@
+{
+  "name": "theshowstatsbot",
+  "version": "0.0.1",
+  "description": "A simple bot to scrape MLB The Show website data and display it in Discord. Initially for Geek Lockdown (GLD) franchise.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mackenza/theshowstatsbot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "GLD",
+    "Geek",
+    "Lockdown",
+    "MLB",
+    "The",
+    "Show"
+  ],
+  "author": "mackenza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mackenza/theshowstatsbot/issues"
+  },
+  "homepage": "https://github.com/mackenza/theshowstatsbot#readme",
+  "dependencies": {
+    "ascii-table": "0.0.9",
+    "discord.js": "^11.0.0",
+    "osmosis": "^1.1.2",
+    "yargs": "^7.0.2"
+  }
+}

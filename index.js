@@ -1,24 +1,44 @@
 require('dotenv').config();
 const Discord = require('discord.js');
-const parseCommands = require('./lib/commands/all').parseCommands();
-
-// create an instance of a Discord Client, and call it bot
+const commands = require('bot-commander');
+const scrapers = require('./lib/scrapers/avg');
 const bot = new Discord.Client();
-
-// the token of your bot - https://discordapp.com/developers/applications/me
 const token = process.env.TOKEN;
 
-// the ready event is vital, it means that your bot will only start reacting to information
-// from Discord _after_ ready is emitted.
 bot.on('ready', () => {
   console.log('I am ready!');
 });
 
-// create an event listener for messages
 bot.on('message', message => {
-  message.channel.sendMessage(parseCommands(message.content));
+  commands.setSend((meta, cmdMsg) => (message.channel.sendMessage(cmdMsg)));
+  commands.parse(message.content);
 });
 
-// log our bot in
 bot.login(token);
 
+let subCommands = commands
+    .command('!mlb')
+    .description('base command for TheShowStatsBot but doesn\'t do anything without subcommands');
+
+subCommands
+    .command('avg')
+    .description('Show the top players by batting avg')
+    .action(a => {
+        scrapers.getAvg(a);
+    });
+
+subCommands
+    .command('hits')
+    .description('Show the top players by hits')
+    .action(a => {
+        console.log("hits worked");
+        return "hits worked";
+    });
+
+function returnMessage(stats, meta) {
+  commands.send(meta, stats);
+}
+
+module.exports = {
+  returnMessage: returnMessage
+}

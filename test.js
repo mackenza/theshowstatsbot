@@ -1,5 +1,7 @@
-const parseMessage = require('./lib/commands/all');
+const getAvg = require('./lib/scrapers/avg');
 
-var messageText = "!mlb avg";
+function getResults(avgStats) {
+    console.log(avgStats.toString());
+}
 
-parseMessage.parseMessage(messageText);
+getAvg.getAvg(getResults);

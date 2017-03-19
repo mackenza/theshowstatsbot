@@ -18,8 +18,10 @@ bot.on('message', message => {
 
 bot.login(token);
 
-let franchiseCmds = commands
+let subCommands = commands
     .command('!mlb')
     .description('base command for TheShowStatsBot but doesn\'t do anything without further subcommands');
 
-franchiseCmds.load('./lib/commands/franchise.js');
+subCommands.load('./lib/commands/franchise.js');
+
+subCommands.load('./lib/commands/config.js');

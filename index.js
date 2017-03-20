@@ -1,11 +1,10 @@
 require('dotenv').config();
 const Discord = require('discord.js');
 const commands = require('bot-commander');
+const Datastore = require('nedb');
 
 const bot = new Discord.Client();
 const token = process.env.TOKEN;
-
-var channel;
 
 bot.on('ready', () => {
   console.log('I am ready!');
@@ -23,5 +22,4 @@ let subCommands = commands
     .description('base command for TheShowStatsBot but doesn\'t do anything without further subcommands');
 
 subCommands.load('./lib/commands/franchise.js');
-
 subCommands.load('./lib/commands/config.js');

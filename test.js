@@ -1,7 +1,15 @@
-const getAvg = require('./lib/scrapers/avg');
+const Datastore = require('nedb');
+var db = new Datastore({filename: './data/datastore.db', autoload: true});
 
-function getResults(avgStats) {
-    console.log(avgStats.toString());
-}
+var doc = {
+    guild: "GeekLockdown",
+    franchise: "275472"
+};
 
-getAvg.getAvg(getResults);
+db.insert(doc, (err, newDoc) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(newDoc);
+    }
+});

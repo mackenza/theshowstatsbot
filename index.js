@@ -1,13 +1,12 @@
 require('dotenv').config();
 const Discord = require('discord.js');
 const commands = require('bot-commander');
-const Datastore = require('nedb');
 
 const bot = new Discord.Client();
 const token = process.env.TOKEN;
 
 bot.on('ready', () => {
-  console.log('I am ready!');
+    console.log('I am ready!');
 });
 
 bot.on('message', message => {
